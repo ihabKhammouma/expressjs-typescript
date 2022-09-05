@@ -11,4 +11,10 @@ router.post(
 	Middleware.handleValidationError,
 	CategoryController.create
 );
+router.get(
+	'/categories',
+	CategoryValidator.checkReadCategory(),
+	Middleware.handleValidationError,
+	CategoryController.getAll
+);
 export default router;

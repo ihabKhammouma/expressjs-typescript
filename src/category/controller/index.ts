@@ -14,6 +14,21 @@ class CategoryController {
 			});
 		}
 	}
+	async getAll(req: Request, res: Response) {
+		try {
+			const limit = (req.query.limit as number | undefined) || 10;
+			const offset = req.query.offset as number | undefined;
+
+			const records = await CategoryInstance.findAll({
+				where: {},
+				limit,
+				offset,
+			});
+			return res.json(records);
+		} catch (e) {
+			return res.json({ msg: "fail to read", status: 500, route: "/categories" });
+		}
+	}
 }
 
 export default new CategoryController();
