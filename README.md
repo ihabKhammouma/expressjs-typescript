@@ -14,3 +14,8 @@ yarn install
 ```
 yarn run dev
 ```
+
+## Docker version
+```
+docker-compose up --build
+```
