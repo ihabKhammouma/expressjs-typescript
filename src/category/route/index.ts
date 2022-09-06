@@ -17,4 +17,10 @@ router.get(
 	Middleware.handleValidationError,
 	CategoryController.getAll
 );
+router.get(
+	"/:id/products",
+	CategoryValidator.checkIdParam(),CategoryValidator.checkReadCategory(),
+	Middleware.handleValidationError,
+	CategoryController.getProductsById
+);
 export default router;

@@ -1,0 +1,90 @@
+{
+	"info": {
+		"_postman_id": "eb3176f7-287c-4efb-9a2b-f7ac71fb27cb",
+		"name": "category",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "{{host}}/categories",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"test cateegory\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{host}}/categories"
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/products",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"rg\",\n    \"price\":17858755.254,\n    \"stock\":1,\n    \"category_ids\":[1]\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{host}}/products"
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{host}}/categories"
+			},
+			"response": []
+		},
+		{
+			"name": "{{host}}/categories/1/products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{host}}/categories/1/products"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://localhost:9100",
+			"type": "default"
+		}
+	]
+}

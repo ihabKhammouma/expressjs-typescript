@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { ProductInstance } from "../../product/model";
 import { CategoryInstance } from "../model";
 
 class CategoryController {
@@ -30,6 +31,36 @@ class CategoryController {
 				msg: "fail to read",
 				status: 500,
 				route: "/categories",
+			});
+		}
+	}
+	async getProductsById(req: Request, res: Response) {
+		try {
+			const { id } = req.params;
+			const limit = (req.query.limit as number | undefined) || 10;
+			const offset = req.query.offset as number | undefined;
+			const records = await CategoryInstance.findOne({
+				where: { id },
+				limit,
+				offset,
+				include: [
+					{
+						model: ProductInstance,
+						as: "products",
+						attributes: { exclude: ["createdAt", "updatedAt"] },
+						through: { attributes: [] },
+					},
+				],
+				subQuery: false,
+			});
+			const final = records?.products;
+			return res.json(final);
+		} catch (e) {
+			return res.json({
+				msg: "fail to read",
+				status: 500,
+				route: "/products",
+				e,
 			});
 		}
 	}

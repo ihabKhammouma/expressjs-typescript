@@ -1,4 +1,4 @@
-import { body, query } from "express-validator";
+import { body, query, param } from "express-validator";
 
 class CategoryValidator {
 	checkCreateCategory() {
@@ -16,6 +16,15 @@ class CategoryValidator {
 				.optional()
 				.isNumeric()
 				.withMessage("The value should be number"),
+		];
+	}
+	checkIdParam() {
+		return [
+			param("id")
+				.notEmpty()
+				.withMessage("The value should be not empty")
+				.isNumeric()
+				.withMessage("The value should be uuid v4"),
 		];
 	}
 }

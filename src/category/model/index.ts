@@ -13,6 +13,7 @@ export class CategoryInstance
 {
 	id!: string;
 	name!: string;
+	products?: ProductInstance[];
 }
 
 CategoryInstance.init(
@@ -44,5 +45,11 @@ CatProd.init(
 		modelName: "CatProd",
 	}
 );
-CategoryInstance.belongsToMany(ProductInstance, { through: CatProd });
-ProductInstance.belongsToMany(CategoryInstance, { through: CatProd });
+CategoryInstance.belongsToMany(ProductInstance, {
+	through: CatProd,
+	as: "products",
+});
+ProductInstance.belongsToMany(CategoryInstance, {
+	through: CatProd,
+	as: "categories",
+});
