@@ -26,7 +26,11 @@ class CategoryController {
 			});
 			return res.json(records);
 		} catch (e) {
-			return res.json({ msg: "fail to read", status: 500, route: "/categories" });
+			return res.json({
+				msg: "fail to read",
+				status: 500,
+				route: "/categories",
+			});
 		}
 	}
 }

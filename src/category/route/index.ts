@@ -6,13 +6,13 @@ import CategoryController from "../controller";
 const router = express.Router();
 
 router.post(
-	"/categories",
+	"/",
 	CategoryValidator.checkCreateCategory(),
 	Middleware.handleValidationError,
 	CategoryController.create
 );
 router.get(
-	'/categories',
+	"/",
 	CategoryValidator.checkReadCategory(),
 	Middleware.handleValidationError,
 	CategoryController.getAll

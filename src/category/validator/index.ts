@@ -1,4 +1,4 @@
-import { body, query, param } from "express-validator";
+import { body, query } from "express-validator";
 
 class CategoryValidator {
 	checkCreateCategory() {
